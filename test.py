@@ -15,11 +15,14 @@ class PypeEnd(AsyncPype):
     async def run(self, data):
         print("#End")
 
+    def conduits(self):
+        return (PypeOut,)
+
 
 class PypeOut(AsyncPype):
     async def run(self, data):
         await asyncio.sleep(random() * 3)
-        data["data"] = data["data"][::-1]
+        #data["data"] = data["data"][::-1]
         print("#Out: " , id(self), data)
 
         return data
